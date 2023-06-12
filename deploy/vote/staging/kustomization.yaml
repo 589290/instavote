@@ -5,10 +5,26 @@ resources:
 patchesStrategicMerge:
 - deployment.yaml
 - service.yaml
+
 namespace: instavote
+
 images:
 - name: schoolofdevops/vote
   newTag: v4
+
 replicas:
 - name: vote
   count: 2
+
+commonLabels:
+  project: instavote
+  env: staging
+
+commonAnnotations:
+  supported-by: "abc@efg.com"
+
+configMapGenerator:
+- name: vote
+  literals:
+  - OPTION_A=STAGING
+  - OPTION_B=DEV
