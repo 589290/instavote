@@ -24,7 +24,6 @@ commonAnnotations:
   supported-by: "abc@efg.com"
 
 configMapGenerator:
-- name: vote
-  literals:
-  - OPTION_A=STAGING
-  - OPTION_B=DEV
+- name: vote-options
+  envs:
+  - options.env
